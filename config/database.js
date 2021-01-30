@@ -11,27 +11,26 @@ module.exports = ({ env }) => {
           settings: {
             client: "postgres",
             host: config.host,
-            port: config.host,
+            port: config.port,
             database: config.database,
             username: config.user,
             password: config.password,
           },
           options: {
-            ssl: {
-              rejectUnauthorized: false,
-            },
+            ssl: false,
           },
         },
       },
     };
   }
+
   return {
     defaultConnection: "default",
     connections: {
       default: {
         connector: "bookshelf",
         settings: {
-          // client: "sqlite",
+          client: "sqlite",
           filename: env("DATABASE_FILENAME", ".tmp/data.db"),
         },
         options: {
